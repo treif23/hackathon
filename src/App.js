@@ -128,8 +128,8 @@ class App extends Component {
 
 
             <div className='col-lg-8' id='info'>
-              <div className='row' id='row'>
-                <div className='col-lg-4' id='info2'>
+              <div className='row no-gutters' id='row'>
+                <div className='col-lg-4 no-gutters' id='info2'>
                   <img src={this.state.image} />
                 </div>
                 <div className='col-lg-8' id='quote'>
