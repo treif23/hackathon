@@ -49,6 +49,11 @@ div{
 
 }
 
+.flex-container{
+  display: flex;
+  justify-content: center;
+}
+
 #quote{
   background-color: white;
   color:black;

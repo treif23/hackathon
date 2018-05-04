@@ -132,7 +132,7 @@ class App extends Component {
                 <div className='col-lg-4 no-gutters' id='info2'>
                   <img src={this.state.image} />
                 </div>
-                <div className='col-lg-8' id='quote'>
+                <div class='flex-container' className='col-lg-8' id='quote'>
                   <strong>{this.state.quote}</strong>
                   <div id='author'>
                     -<i>{this.state.author}</i>
