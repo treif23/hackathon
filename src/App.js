@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 
@@ -24,15 +23,15 @@ class App extends Component {
     console.log('inside generateQuote func');
     axios({
       method: 'get',
-      url: 'https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous&count=10',
+      url: 'https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous&count=1',
       headers: {
         'X-Mashape-Key': `${this.state.mashapeKey}`,
         'accept': 'application/json'
       }
     }).then((res) => {
-      console.log(res);
-      const author = res.data.author;
-      const quote = res.data.quote;
+      console.log(res.data[0].quote, 'hello');
+      const author = res.data[0].author;
+      const quote = res.data[0].quote;
 
       this.setState({ author: author, quote: quote });
       axios({
@@ -46,19 +45,19 @@ class App extends Component {
           console.log(res.data);
           const image = res.data.hits[1].webformatURL;
           this.setState({ image: image });
-          console.log('image');
+          console.log();
 
-        } else if (this.state.author == "Voltaire") {
+        } else if (this.state.author === "Voltaire") {
           this.setState({ image: 'http://oll.libertyfund.org/media/W1siZiIsInBlb3BsZS8zODA0L0QnYXByw6hzX01hdXJpY2VfUXVlbnRpbl9kZV9MYV9Ub3VyLF9Qb3J0cmFpdF9kZV9Wb2x0YWlyZSxfZMOpdGFpbF9kdV92aXNhZ2VfKGNow6J0ZWF1X2RlX0Zlcm5leSkuanBnIl1d/D%27apr%C3%A8s_Maurice_Quentin_de_La_Tour%2C_Portrait_de_Voltaire%2C_d%C3%A9tail_du_visage_%28ch%C3%A2teau_de_Ferney%29.jpg?sha=3d190836d5c18638' });
-        } else if (this.state.author == 'Paul Erdos') {
+        } else if (this.state.author === 'Paul Erdos') {
           this.setState({ image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Erdos_head_budapest_fall_1992.jpg/200px-Erdos_head_budapest_fall_1992.jpg' });
-        } else if (this.state.author == "Sir Winston Churchill") {
+        } else if (this.state.author === "Sir Winston Churchill") {
           this.setState({ image: 'http://www.artnet.com/WebServices/images/ll00045lldU1uGFgOKECfDrCWvaHBOcbpGD/elsie-barling-sir-winston-churchill-(after-yousuf-karsh).jpg' });
         }
-        else if (this.state.author == "Thomas Alva Edison") {
+        else if (this.state.author === "Thomas Alva Edison") {
           this.setState({ image: 'https://media1.britannica.com/eb-media/47/79847-004-186AC6B6.jpg' });
         }
-        else if (this.state.author == "Thomas Alba Edison") {
+        else if (this.state.author === "Thomas Alba Edison") {
           this.setState({ image: 'https://media1.britannica.com/eb-media/47/79847-004-186AC6B6.jpg' });
         }
         else {
@@ -124,9 +123,6 @@ class App extends Component {
                 </form>
               </div>
             </div>
-
-
-
             <div className='col-lg-8' id='info'>
               <div className='row no-gutters' id='row'>
                 <div className='col-lg-4 no-gutters' id='info2'>
