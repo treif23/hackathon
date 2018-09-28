@@ -20,7 +20,6 @@ class App extends Component {
 
   generateQuote(e) {
     e.preventDefault();
-    console.log('inside generateQuote func');
     axios({
       method: 'get',
       url: 'https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous&count=1',
@@ -29,7 +28,6 @@ class App extends Component {
         'accept': 'application/json'
       }
     }).then((res) => {
-      console.log(res.data[0].quote, 'hello');
       const author = res.data[0].author;
       const quote = res.data[0].quote;
 
@@ -42,10 +40,8 @@ class App extends Component {
         }
       }).then((res) => {
         if (res.data.hits.length > 1) {
-          console.log(res.data);
           const image = res.data.hits[1].webformatURL;
           this.setState({ image: image });
-          console.log();
 
         } else if (this.state.author === "Voltaire") {
           this.setState({ image: 'http://oll.libertyfund.org/media/W1siZiIsInBlb3BsZS8zODA0L0QnYXByw6hzX01hdXJpY2VfUXVlbnRpbl9kZV9MYV9Ub3VyLF9Qb3J0cmFpdF9kZV9Wb2x0YWlyZSxfZMOpdGFpbF9kdV92aXNhZ2VfKGNow6J0ZWF1X2RlX0Zlcm5leSkuanBnIl1d/D%27apr%C3%A8s_Maurice_Quentin_de_La_Tour%2C_Portrait_de_Voltaire%2C_d%C3%A9tail_du_visage_%28ch%C3%A2teau_de_Ferney%29.jpg?sha=3d190836d5c18638' });
@@ -62,7 +58,6 @@ class App extends Component {
         }
         else {
           this.setState({ image: 'https://static1.squarespace.com/static/5255bb7ce4b0a1f7f0508f19/t/53909e98e4b0a29c720d5985/1401986713890/?format=300w' });
-          console.log('no images')
         }
       })
     });
